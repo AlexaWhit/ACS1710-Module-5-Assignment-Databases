@@ -21,7 +21,7 @@ def plants_list():
 
     # TODO: Replace the following line with a database call to retrieve *all*
     # plants from the Mongo database's `plants` collection.
-    plants_data = ''
+    plants_data = mongo.db.plants.find()
 
     context = {
         'plants': plants_data,
@@ -40,16 +40,33 @@ def create():
         # TODO: Get the new plant's name, variety, photo, & date planted, and 
         # store them in the object below.
         new_plant = {
-            'name': '',
-            'variety': '',
-            'photo_url': '',
-            'date_planted': ''
+            'name': 'Lavender',
+            'variety': 'Hidcote',
+            'photo_url': 'https://images.ctfassets.net/i3tkg7dt3kro/2ZohnyfZL2uzTtB4Zk68jb/db8a1ee8c9d2a54d49e7fe23b93f4914/7-hidcote-lavender.jpg',
+            'date_planted': '4/6/2022'
         }
+
+        # new_plant = {
+        #     'name': 'Pineapple',
+        #     'variety': 'Abacaxi',
+        #     'photo_url': 'https://assessa.com.br/wp-content/uploads/frulix-abacaxi-detalhe.jpg',
+        #     'date_planted': '6/1/2022'
+        # }
+
+        # new_plant = {
+        #     'name': 'Garlic',
+        #     'variety': 'German Porcelain Hardneck',
+        #     'photo_url': 'https://blog.jungseed.com/wp-content/uploads/2020/08/German.jpg',
+        #     'date_planted': '12/25/2021'
+        # }
         # TODO: Make an `insert_one` database call to insert the object into the
         # database's `plants` collection, and get its inserted id. Pass the 
         # inserted id into the redirect call below.
+        mongo.db.plants.insert_one(new_plant)
+        print(new_plant)
+      
 
-        return redirect(url_for('detail', plant_id=''))
+        return redirect(url_for('detail', plant_id='6386488650b9e3304508926e'))
 
     else:
         return render_template('create.html')

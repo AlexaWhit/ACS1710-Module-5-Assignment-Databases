@@ -16,6 +16,9 @@
 
             HINT: Use the plant's _id field as the id for constructing URLs.
         #}
+        {% for plant in plant_list %}
+            <p> return redirect(url_for('plant_id')) </p>
+        {% endfor %}
 
         <div id="items">
             <div class="card">
