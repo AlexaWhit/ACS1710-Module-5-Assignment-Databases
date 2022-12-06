@@ -16,10 +16,21 @@
 
             HINT: Use the plant's _id field as the id for constructing URLs.
         #}
-        {% for plant in plant_list %}
-            <p> return redirect(url_for('plant_id')) </p>
+        <div id="plants">
+        {% for plant in plants %}
+            <div class="card">
+                <a href="/plant/{{plant._id}}"><img src="{{plant.photo_url}}"></a>
+                <div class="card-content">
+                    <a href="/plant/{{plant._id}}">{{plant.name}}</a>
+                </div>
+            </div>
         {% endfor %}
+        </div>
+    </div>
+</main>
 
+{% endblock content %}
+<!-- 
         <div id="items">
             <div class="card">
                 <a href="/plant/1"><img src="https://www.almanac.com/sites/default/files/styles/primary_image_in_article/public/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg?itok=4KrW14a4"></a>
@@ -48,9 +59,4 @@
                     <a href="/plant/4">Jalapeno</a>
                 </div>
             </div>
-        </div>
-    </div>
-
-</main>
-
-{% endblock content %}
+        </div> -->
